@@ -16,9 +16,8 @@ cols_file = sys.argv[3]
 space = utils.readDM(space_file)
 cols = utils.readDims(cols_file)
 
-#background_space = utils.readDM("BNC.w10.4000c.5000r.ppmi.rownorm.dm")
-background_space = utils.readDM("spaces/bnc.dm")
-background_cols = utils.readDM("BNC.w10.4000c.5000r.ppmi.rownorm.cols")
+background_space = utils.readDM("BNC.w10.4000c.5000r.ppmi.rownorm.dm")
+background_cols = utils.readDims("BNC.w10.4000c.5000r.ppmi.rownorm.cols")
 
 
 '''Record weights for character'''

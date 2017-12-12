@@ -9,7 +9,7 @@ def readDM(dm_file):
 
     #Make dictionary with key=row, value=vector
     for l in dmlines:
-        items=l.rstrip().split()
+        items=l.rstrip().split('\t')
         row=items[0]
         vec=[float(i) for i in items[1:]]
         vec=np.array(vec)
@@ -30,7 +30,7 @@ def readChars(char_file):
     chars = {}
     c = open(char_file,"r")
     for l in c:
-        pair = l.rstrip("\n").split("\t")
+        pair = l.rstrip("\n").split('\t')
         context = cap_pos(pair[1].lower())
         chars[context]=float(pair[0])
     c.close()
@@ -40,7 +40,9 @@ def normalise(v):
     norm = np.linalg.norm(v)
     if norm == 0:
         return v
-    return v / norm
+    v = v / norm
+    #print(sum([i*i for i in v]))
+    return v
 
 def cosine_similarity(v1, v2):
     if len(v1) != len(v2):
