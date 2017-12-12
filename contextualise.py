@@ -1,6 +1,6 @@
 #contextualise.py
 #USAGE: python3 contextualise.py [individual] [space file] [cols file] [char file for individual] [numbers of chars used] [weight for context vector]
-#EXAMPLE: python3 contextualise.py man_N bnc.dm bnc.cols data/Darcy.chars 20 6
+#EXAMPLE: python3 contextualise.py man_N bnc.dm bnc.cols data/pride/Darcy.chars 20 6
 #-------
 import sys
 import re
@@ -72,7 +72,7 @@ for i in range(len(space[character])):
 c=1
 top_contexts=""
 for char in sorted(new_chars, key=new_chars.get, reverse=True):
-    if c < 20:
+    if c < 50:
         top_contexts+=char+' '
         c+=1
 print("\nTop contexts for",character,":",top_contexts[:-1])

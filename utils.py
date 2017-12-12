@@ -70,10 +70,14 @@ def sim_to_matrix(dm_dict,word,n):
 
 def coherence(dm_dict,contexts):
     cosines = []
-    for i in range(len(contexts)-2):
-        for j in range(i,len(contexts)-1):
-            cos = cosine_similarity(dm_dict[contexts[i]],dm_dict[contexts[j]])
-            cosines.append(cos)
+    for i in range(len(contexts)-1):
+        for j in range(i,len(contexts)):
+            w1 = contexts[i] 
+            w2 = contexts[j]
+            if w1 in dm_dict and w2 in dm_dict and w1!=w2:
+                cos = cosine_similarity(dm_dict[w1],dm_dict[w2])
+                cosines.append(cos)
+    print(len(cosines),"cosines calculated")
     return sum(cosines)/len(cosines)
 
 
